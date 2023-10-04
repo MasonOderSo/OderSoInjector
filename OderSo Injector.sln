@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OderSo Injector", "OderSo Injector\OderSo Injector.csproj", "{56F558FA-07A3-4645-9764-155E0D7D0AD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Debug|x64.ActiveCfg = Debug|x64
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Debug|x64.Build.0 = Debug|x64
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Release|x64.ActiveCfg = Release|x64
+		{56F558FA-07A3-4645-9764-155E0D7D0AD7}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8823DC1E-A62D-4A0D-976E-9A91A21D8BF3}
+	EndGlobalSection
+EndGlobal

@@ -14,6 +14,9 @@ namespace OderSo_Injector
         [STAThread]
         static void Main()
         {
+            if (!Utils.CheckConnection())
+                MessageBox.Show("!! WARNING !!\nNo connection to the internet could be established!\nYou may not be able to download the client!");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

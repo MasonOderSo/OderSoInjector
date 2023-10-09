@@ -96,9 +96,9 @@ namespace OderSo_Injector
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(294, 402);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Pfad zur DLL";
+            this.label1.Text = "Path to DLL";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Form1

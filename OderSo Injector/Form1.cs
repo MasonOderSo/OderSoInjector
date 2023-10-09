@@ -4,6 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
+using System.Net;
+using System.Windows.Media;
 
 namespace OderSo_Injector
 {
@@ -11,10 +15,15 @@ namespace OderSo_Injector
     {
         private static string DLLP { get; set; }
 
+        private Font font;
+        private string currentVersion = "";
+
         public Form1()
         {
             InitializeComponent();
             MakeRoundForm();
+            font = new Font("Arial", 16);
+            currentVersion = Utils.GetLatestReleaseName();
 
             Process minecraftProcess = Process.GetProcesses().FirstOrDefault(p => p.ProcessName == "Minecraft.Windows");
 
@@ -31,6 +40,29 @@ namespace OderSo_Injector
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(DLLP) || !File.Exists(DLLP) || !DLLP.EndsWith(".dll"))
+            {
+                if (!Utils.CheckConnection())
+                {
+                    MessageBox.Show("Connection test failed");
+                    return;
+                }
+
+                string release = Utils.GetLatestReleaseName();
+
+                if (string.IsNullOrEmpty(release))
+                {
+                    MessageBox.Show("Failed to get latest release name");
+                    return;
+                }
+
+                var wc = new WebClient();
+                var file = Path.Combine(Path.GetTempPath(), "OderSo.dll");
+                wc.DownloadFileCompleted += (_, __) => Injector.Inject(file);
+                wc.DownloadFileAsync(new Uri("https://github.com/MasonOderSo/OderSoReleases/releases/download/" + release + "/OderSo.dll"), file);
+                return;
+            }
+
             Injector.Inject(DLLP);
         }
 
@@ -85,6 +117,27 @@ namespace OderSo_Injector
             base.WndProc(ref m);
             if (m.Msg == WM_NCHITTEST)
                 m.Result = (IntPtr)(HT_CAPTION);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            var g = e.Graphics;
+
+            using (System.Drawing.Brush brush = new SolidBrush(System.Drawing.Color.Black))
+            using (System.Drawing.Brush fontBrush = new SolidBrush(System.Drawing.Color.White))
+            {
+                StringFormat drawFormat = new StringFormat
+                {
+                    Alignment = StringAlignment.Near
+                };
+
+                string text = "Current release: " + (string.IsNullOrEmpty(currentVersion) ? "Unknown" : currentVersion);
+                Size textSize = TextRenderer.MeasureText(text, font);
+
+                g.DrawString(text, font,
+                                fontBrush, Size.Width - textSize.Width - 2, Size.Height - font.Height - 2, drawFormat);
+            }
         }
     }
 }
